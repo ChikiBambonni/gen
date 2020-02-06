@@ -1,0 +1,9 @@
+<header id="nav-header">
+  <div class="links-container">
+    <ul class="nav-list nav-list-font">
+      <li *ngFor="let item of items; let i = index" class="nav-list-item" [ngClass]="{'nav-list-item-active': item.active === true}">
+        <a (click)="changeLink(item)">{{ item.title }}</a>
+      </li>
+    </ul>
+  </div>
+</header>

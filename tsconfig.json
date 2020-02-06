@@ -28,6 +28,9 @@
       "@lazy/*" : [
         "src/app/lazy/*"
       ],
+      "@material/*" : [
+        "src/app/material/*"
+      ],
       "@environment": [
         "src/environments/environment"
       ]
