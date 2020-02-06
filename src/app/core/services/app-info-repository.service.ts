@@ -13,7 +13,6 @@ import { InfoRepository } from '@core/interfaces/app-info-repository.interface';
 @Injectable()
 export class AppInfoRepository extends BaseApi implements InfoRepository {
 
-
   constructor(private httpClient: HttpClient) {
     super();
   }
@@ -23,7 +22,8 @@ export class AppInfoRepository extends BaseApi implements InfoRepository {
       `${environment.iapi}/instruments`,
       { params: this.getRequestParams(params) }
     ).pipe(
-      map((response: Instrument[]) => this.getSuccessBody(response))
+      map((response: Instrument[]) => this.getSuccessBody(response)),
+      catchError((error: HttpErrorResponse) => of(this.getErrorBody<Instrument[]>(error)))
     );
   }
 }
