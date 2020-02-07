@@ -1,7 +1,8 @@
 div.instruments-table {
+  max-width: 1200px;
   margin: 24px;
 
-  & > mat-card.table-card {
-    max-width: 1200px;
+  & > mat-card.filters-card {
+    margin-bottom: 24px;
   }
 }

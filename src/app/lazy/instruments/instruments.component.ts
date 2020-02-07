@@ -18,6 +18,7 @@ import { pageEvent } from './instruments.constants';
 })
 export class InstrumentsComponent extends DataComponent implements OnInit {
 
+  openOnly: boolean = false;
   menuItems: MainMenuItem[] = mainMenuItems;
   pageEvent: PageEvent = pageEvent;
   displayedColumns: string[];
@@ -49,5 +50,9 @@ export class InstrumentsComponent extends DataComponent implements OnInit {
     this.isLoading = true;
     this.pageEvent = $event;
     this.fetchData(this.pageEvent);
+  }
+
+  changeOpenOnly() {
+    console.log('-------', this.openOnly);
   }
 }

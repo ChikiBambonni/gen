@@ -1,6 +1,9 @@
 <app-header [items]="menuItems"></app-header>
 
 <div class="instruments-table">
+  <mat-card class="filters-card">
+    <mat-checkbox [(ngModel)]="openOnly" (change)="changeOpenOnly()">open only</mat-checkbox>
+  </mat-card>
   <mat-card class="table-card">
     <app-common-spinner *ngIf="isLoading"></app-common-spinner>
     <app-error-message *ngIf="error" [error]="error"></app-error-message>
