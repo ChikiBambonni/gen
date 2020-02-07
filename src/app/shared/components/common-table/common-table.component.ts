@@ -33,7 +33,7 @@ export class CommonTableComponent implements OnInit {
   ngOnInit() {
   }
 
-  rowHandler(row) { // TODO: create interface
+  rowHandler(row) {
     this.rowClick.emit(row);
   }
 }

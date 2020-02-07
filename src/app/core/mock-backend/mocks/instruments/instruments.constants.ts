@@ -1,6 +1,6 @@
-import { Instrument } from '@core/interfaces/data.interfaces';
+import { InstrumentStat } from '@core/interfaces/data.interfaces';
 
-export const INSTRUMENT_MOCK_DATA: Instrument[] = [
+export const INSTRUMENT_MOCK_DATA: InstrumentStat[] = [
   {
     "instrumentID": 1,
     "name": "EUR/USD",
