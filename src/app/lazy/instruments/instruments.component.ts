@@ -24,10 +24,11 @@ export class InstrumentsComponent extends DataComponent implements OnInit {
   displayedColumns: string[];
   dataSource: MatTableDataSource<any>;
 
-  private fetchData(event: PageEvent) {
+  private fetchData(event: PageEvent, open: boolean = false) {
     this.repository.getInstruments({
       pagesize: event.pageSize,
-      page: event.pageIndex + 1
+      page: event.pageIndex + 1,
+      openOnly: open
     }).subscribe((res: ComponentResponse<PaginationInterface<InstrumentItem>>) => {
       this.isLoading = false;
       this.error = res.error;
@@ -53,6 +54,7 @@ export class InstrumentsComponent extends DataComponent implements OnInit {
   }
 
   changeOpenOnly() {
-    console.log('-------', this.openOnly);
+    this.isLoading = true;
+    this.fetchData(this.pageEvent, this.openOnly);
   }
 }

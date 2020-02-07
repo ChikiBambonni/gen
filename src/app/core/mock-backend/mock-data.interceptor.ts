@@ -37,8 +37,7 @@ export class MockDataInterceptor implements HttpInterceptor {
             requestParams,
             req.body
           )
-        }))
-          .pipe(delay(entity.mock.delay || defaultMockDelay));
+        })).pipe(delay(entity.mock.delay || defaultMockDelay));
       }
     }
 

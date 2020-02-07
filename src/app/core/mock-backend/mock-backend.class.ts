@@ -4,7 +4,6 @@ export abstract class MockBackendFactory<T> {
 
   delay: number;
 
-  protected numberFields: string[] = [];
   protected items: T[] = [];
 
   constructor(delay?: number) {

@@ -20,25 +20,10 @@ export class AppInfoRepository extends BaseApi implements InfoRepository {
 
   // getInstruments(params?: object): Observable<ComponentResponse<PaginationInterface<InstrumentItem>>> {
   getInstruments(params?: object): Observable<any> {
-    return this.httpClient.get<PaginationInterface<InstrumentStat>>(
+    return this.httpClient.get<PaginationInterface<InstrumentItem>>(
       `${environment.iapi}/instruments`,
       { params: this.getRequestParams(params) }
     ).pipe(
-      map((res: PaginationInterface<InstrumentStat>) => {
-        const now = +new Date();
-        const response: PaginationInterface<InstrumentItem> = {
-          ...res,
-          elements: res.elements.map((element: InstrumentStat) => {
-            return {
-              instrumentID: element.instrumentID,
-              name: element.name,
-              isOpen: element.tradingHours.some((e: TradingHour) => e.from <= now && e.to >= now)
-            };
-          })
-        };
-
-        return response;
-      }),
       map((res: PaginationInterface<InstrumentItem>) => this.getSuccessBody(res)),
       catchError((error: HttpErrorResponse) => of(this.getErrorBody<PaginationInterface<InstrumentItem>>(error)))
     );
