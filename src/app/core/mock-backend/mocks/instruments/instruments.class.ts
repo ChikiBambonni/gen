@@ -5,16 +5,14 @@ import { INSTRUMENT_MOCK_DATA } from './instruments.constants';
 
 export class InstrumentsMocks extends MockBackendFactory<InstrumentItem> {
 
+  private getOpenOnly(items: InstrumentItem[]): InstrumentItem[] {
+    return items.filter((element: InstrumentItem) => element.isOpen);
+  }
 
-
-  /* private getOpenOnly(): InstrumentStat[] {
-
-  } */
-
-  private ToTableItems(statItems: InstrumentStat[]): InstrumentItem[] {
+  private ToTableItems(items: InstrumentStat[]): InstrumentItem[] {
     const now = +new Date();
 
-    return statItems.map((element: InstrumentStat) => {
+    return items.map((element: InstrumentStat) => {
       return {
         instrumentID: element.instrumentID,
         name: element.name,
@@ -25,12 +23,12 @@ export class InstrumentsMocks extends MockBackendFactory<InstrumentItem> {
 
   constructor() {
     super();
-
-    this.items = this.ToTableItems(INSTRUMENT_MOCK_DATA);
   }
 
-  getData(params: object): PaginationInterface<InstrumentItem> {
-    console.log('Params', params);
+  getData(params: any): PaginationInterface<InstrumentItem> {
+    this.items = this.ToTableItems(INSTRUMENT_MOCK_DATA);
+    this.items = params.openOnly ? this.getOpenOnly(this.items) : this.items;
+
     return this.getTableData(params);
   }
 }

@@ -24,7 +24,7 @@ export class InstrumentsComponent extends DataComponent implements OnInit {
   displayedColumns: string[];
   dataSource: MatTableDataSource<any>;
 
-  private fetchData(event: PageEvent, open: boolean = false) {
+  private fetchData(event: PageEvent, open: boolean) {
     this.repository.getInstruments({
       pagesize: event.pageSize,
       page: event.pageIndex + 1,
@@ -44,13 +44,13 @@ export class InstrumentsComponent extends DataComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fetchData(this.pageEvent);
+    this.fetchData(this.pageEvent, this.openOnly);
   }
 
   changePage($event: PageEvent) {
     this.isLoading = true;
     this.pageEvent = $event;
-    this.fetchData(this.pageEvent);
+    this.fetchData(this.pageEvent, this.openOnly);
   }
 
   changeOpenOnly() {
