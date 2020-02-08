@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { MainMenuItem } from '@shared/components/header/header.interfaces';
-import { mainMenuItems } from '@shared/components/header/header.constants';
 import { DataComponent } from '@core/utils/data-component.class';
 import { AppInfoRepository } from '@core/services/app-info-repository.service';
 import { ComponentResponse } from '@core/interfaces/http.interfaces';
@@ -19,7 +17,6 @@ import { pageEvent } from './instruments.constants';
 export class InstrumentsComponent extends DataComponent implements OnInit {
 
   openOnly: boolean = false;
-  menuItems: MainMenuItem[] = mainMenuItems;
   pageEvent: PageEvent = pageEvent;
   displayedColumns: string[];
   dataSource: MatTableDataSource<any>;
@@ -55,6 +52,7 @@ export class InstrumentsComponent extends DataComponent implements OnInit {
 
   changeOpenOnly() {
     this.isLoading = true;
-    this.fetchData(this.pageEvent, this.openOnly);
+    this.pageEvent = { previousPageIndex: 0, pageIndex: 0, pageSize: 10, length: 2 };
+    this.fetchData(pageEvent, this.openOnly);
   }
 }

@@ -10,8 +10,9 @@
     li.nav-list-item {
       display: inline-block;
       margin-right: 20px;
-      padding: 7px 10px;
+      padding: 16px 10px;
       cursor: pointer;
+      outline: none !important;
 
       a {
         text-decoration: none;

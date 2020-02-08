@@ -7,7 +7,6 @@ import { CommonPaginatorModule } from '@shared/components/common-paginator/commo
 import { CommonTableModule } from '@shared/components/common-table/common-table.module';
 import { ErrorMessageModule } from '@shared/components/error-message/error-message.module';
 import { CommonSpinnerModule } from '@shared/components/common-spinner/common-spinner.module';
-import { HeaderModule } from '@shared/components/header/header.module';
 import { InstrumentsComponent } from './instruments.component';
 import { InstrumentsRoutingModule } from './instruments-routing.module';
 
@@ -20,7 +19,6 @@ import { InstrumentsRoutingModule } from './instruments-routing.module';
     FormsModule,
     MaterialModule,
     InstrumentsRoutingModule,
-    HeaderModule,
     CommonTableModule,
     CommonPaginatorModule,
     CommonSpinnerModule,

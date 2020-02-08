@@ -16,7 +16,4 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  changeLink(item: MainMenuItem) {
-  }
 }

@@ -9,6 +9,9 @@ const routes: Routes = [{
     path: 'instruments',
     loadChildren: () => import('./lazy/instruments/instruments.module').then(mod => mod.InstrumentsModule),
   }, {
+    path: 'hailstone',
+    loadChildren: () => import('./lazy/hailstone/hailstone.module').then(mod => mod.HailstoneModule)
+  }, {
     path: '**',
     redirectTo: '/instruments',
     pathMatch: 'full'

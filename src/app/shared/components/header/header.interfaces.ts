@@ -1,4 +1,4 @@
 export interface MainMenuItem {
   title: string;
-  active: boolean;
+  url: string;
 }
