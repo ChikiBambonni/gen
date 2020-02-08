@@ -29,10 +29,12 @@ export class InstrumentsComponent extends DataComponent implements OnInit {
     }).subscribe((res: ComponentResponse<PaginationInterface<InstrumentItem>>) => {
       this.isLoading = false;
       this.error = res.error;
-      this.dataSource = new MatTableDataSource();
-      this.displayedColumns = Object.keys(res.value.elements[0]);
-      this.dataSource.data = res.value.elements;
-      this.pageEvent.length = res.value.totalElements;
+      if (!this.error) {
+        this.dataSource = new MatTableDataSource();
+        this.displayedColumns = Object.keys(res.value.elements[0]);
+        this.dataSource.data = res.value.elements;
+        this.pageEvent.length = res.value.totalElements;
+      }
     });
   }
 

@@ -1,7 +1,10 @@
 import { HttpParams } from '@angular/common/http';
 
+import { Safe } from '@core/decorators/safe.decorator';
+
 export abstract class HttpUtils {
 
+  @Safe({ returnValue: null })
   protected getRequestParams(params: object | null): HttpParams {
     let requestParams: HttpParams = new HttpParams();
 

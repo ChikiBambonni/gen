@@ -22,8 +22,9 @@ export class HailstoneComponent extends DataComponent implements OnInit {
     }).subscribe((res: ComponentResponse<Hailstone>) => {
       this.isLoading = false;
       this.error = res.error;
-      this.totalStoppingTime = res.value.totalStoppingTime;
-      console.log(res);
+      if (!this.error) {
+        this.totalStoppingTime = res.value.totalStoppingTime;
+      }
     });
   }
 

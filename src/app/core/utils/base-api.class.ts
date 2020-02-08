@@ -1,10 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { BackendHttpError, ErrorResponse, ComponentResponse } from '@core/interfaces/http.interfaces';
+import { Safe } from '@core/decorators/safe.decorator';
 import { HttpUtils } from './http-utils.class';
 
 export abstract class BaseApi extends HttpUtils {
 
+  @Safe({ returnValue: null })
   protected parseError(e: HttpErrorResponse): BackendHttpError {
     return JSON.parse(e.error);
   }

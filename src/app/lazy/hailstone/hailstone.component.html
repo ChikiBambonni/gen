@@ -15,7 +15,7 @@
   <mat-card class="result-card">
     <app-common-spinner *ngIf="isLoading"></app-common-spinner>
     <app-error-message *ngIf="error" [error]="error"></app-error-message>
-    <mat-card-header>
+    <mat-card-header *ngIf="!error">
       <mat-card-title>Total Stopping Time: f({{ a }}) = {{ totalStoppingTime }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
