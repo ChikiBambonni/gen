@@ -20,9 +20,16 @@ const getInstruments = async (req, res, next) => {
     hours = parseFirebaseData(hours.val());
     hours = transformItems(hours);
     if (openOnly) hours = hours.filter(element => element.isOpen);
+    const totalElements = hours.length;
     hours = applyPaging(hours, pagesize, page, req.query.openOnly, openOnly);
 
-    return res.send(hours);
+    return res.send({
+      totalPages: Math.ceil(totalElements/pagesize),
+      totalElements,
+      elements: hours,
+      page,
+      pagesize,
+    });
   } catch (err) {
     return next(err);
   }
