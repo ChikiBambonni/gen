@@ -1,8 +1,13 @@
 div.hailstone {
   margin: 24px;
+  max-width: 1200px;
 
   & > mat-card.filters-card {
     margin-bottom: 24px;
+  }
+
+  & > mat-card.result-card {
+    min-height: 150px;
   }
 
   button {

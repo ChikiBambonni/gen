@@ -21,7 +21,7 @@ export class InstrumentsComponent extends DataComponent implements OnInit {
   displayedColumns: string[];
   dataSource: MatTableDataSource<any>;
 
-  private fetchData(event: PageEvent, open: boolean) {
+  private fetchData(event: PageEvent, open: boolean): void {
     this.repository.getInstruments({
       pagesize: event.pageSize,
       page: event.pageIndex + 1,

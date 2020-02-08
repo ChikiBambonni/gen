@@ -1,30 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 
-import { HailstoneUtils } from '@core/utils/hailstone.utils';
 import { AppInfoRepository } from '@core/services/app-info-repository.service';
 import { Hailstone } from '@core/interfaces/data.interfaces';
 import { ComponentResponse } from '@core/interfaces/http.interfaces';
+import { DataComponent } from '@core/utils/data-component.class';
 
 @Component({
   selector: 'app-hailstone',
   templateUrl: './hailstone.component.html',
   styleUrls: ['./hailstone.component.scss']
 })
-export class HailstoneComponent implements OnInit {
+export class HailstoneComponent extends DataComponent implements OnInit {
 
-  a: number = 0;
-  stoppingTime: number = 0;
+  a: number = 23061912;
+  totalStoppingTime: number = 0;
 
-  constructor(private repository: AppInfoRepository) { }
-
-  ngOnInit() {
-  }
-
-  onApply() {
+  private fetchData(): void {
+    this.isLoading = true;
     this.repository.getHailstoneSeries({
       a: this.a
     }).subscribe((res: ComponentResponse<Hailstone>) => {
-      console.log('Response', res);
+      this.isLoading = false;
+      this.error = res.error;
+      this.totalStoppingTime = res.value.totalStoppingTime;
+      console.log(res);
     });
+  }
+
+  constructor(private repository: AppInfoRepository) {
+    super();
+  }
+
+  ngOnInit() {
+    this.fetchData();
+  }
+
+  onApply() {
+    this.fetchData();
+  }
+
+  changeA() {
+    this.totalStoppingTime = null;
   }
 }
