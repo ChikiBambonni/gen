@@ -8,9 +8,12 @@ const express = require('express');
 const app = express();
 app
   .use(require('./src/routes/instruments.routes'))
-
-/* app.get('/iapi/hailstone', (req, res) => {
-  return res.send('hailstone');
-}); */
+  .use(require('./src/routes/hailstone.routes'))
+  .use((err, req, res, next) => {
+    return res.status(err.status || 400).send({
+      statusCode:  err.status || 400,
+      ERROR: err.message
+    });
+  });
 
 exports.app = functions.https.onRequest(app);

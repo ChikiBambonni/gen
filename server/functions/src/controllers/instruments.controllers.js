@@ -28,15 +28,6 @@ const getInstruments = async (req, res, next) => {
   }
 };
 
-const getHailstone = async (req, res, next) => {
-  try {
-
-  } catch (err) {
-    return next(err);
-  }
-};
-
 module.exports = {
-  getInstruments,
-  getHailstone
+  getInstruments
 };
