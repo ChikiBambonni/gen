@@ -1,0 +1,11 @@
+div.hailstone {
+  margin: 24px;
+
+  & > mat-card.filters-card {
+    margin-bottom: 24px;
+  }
+
+  button {
+    min-width: 150px;
+  }
+}

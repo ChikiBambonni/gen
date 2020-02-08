@@ -1,1 +1,22 @@
-<p>hailstone works!</p>
+<div class="hailstone">
+  <mat-card class="filters-card">
+    <mat-card-header>
+      <mat-card-title>Select positive integer for Hailstone series: </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput type="number" min="0" [(ngModel)]="a">
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="onApply()">Apply</button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card class="result-card">
+    <mat-card-header>
+      <mat-card-title>Stopping Time: f({{ a }}) = {{ stoppingTime }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+    </mat-card-content>
+  </mat-card>
+</div>
