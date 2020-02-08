@@ -15,3 +15,8 @@ export interface InstrumentStat extends Instrument {
 export interface InstrumentItem extends Instrument {
   isOpen: boolean;
 }
+
+export interface Hailstone {
+  series: number[];
+  totalStoppingTime: number;
+}

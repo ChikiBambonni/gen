@@ -6,7 +6,7 @@ export class HailstoneUtils {
     cacheKey: 'hs',
     useParamsAsKeys: true
   })
-  static getHailstoneSeries(a: number) {
+  static getHailstoneSeries(a: number): number[] {
     const go = (n: number, series: number[]) => {
       if (n <= 1) {
         return [...series, n];
@@ -15,6 +15,6 @@ export class HailstoneUtils {
       }
     };
 
-    return go(a, []).length - 1;
+    return go(a, []);
   }
 }
