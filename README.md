@@ -6,22 +6,31 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+While running app supports two modes:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. `Mock mode` - all http calls to endpoints will be intercepted by mock interceptor. See `src/app/core/mock-backend`.
 
-## Build
+2. `Real mode` - all http calls will be forwarded to Node.js server. See `server` folder and `proxy.conf.json` file.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Default mode is - `Mock mode`. Info about what mode to use is stored in `LocalStorage` with `mock_data_service_v1` key.
 
-## Running unit tests
+While app is running you can switch to mode you wish, simply running next code in browser console:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. In you want switch to `Real mode` run - `window.setRealMode();` (page will be reloaded).
 
-## Running end-to-end tests
+2. In you want switch to `Mock mode` run - `window.setMockMode();` (page will be reloaded).
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Remember that running your app in `Real mode` enforces you to run your `Node.js` server with Firebase Realtime Database as well (see `server` folder),
+but if you dont want you can always run app in `Mock mode`.
 
-## Further help
+## Build with server
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+First you will need to install all npm packages then run following commands
+
+```
+ng build --prod
+cd ./server/functions
+npm run serve
+```
+
+Then browse http://localhost:5000
