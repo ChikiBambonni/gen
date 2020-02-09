@@ -11,7 +11,7 @@ const getHailstoneSeries = (a) => {
     }
   };
 
-  return go(a, []);
+  return go(a, []).length - 1;
 };
 
 const mGetHailstoneSeries = memoize(getHailstoneSeries);

@@ -1,4 +1,5 @@
 import { Cache } from '@core/decorators/cache.decorator';
+import { Hailstone } from '@core/interfaces/data.interfaces';
 
 export class HailstoneUtils {
 
@@ -6,7 +7,7 @@ export class HailstoneUtils {
     cacheKey: 'hs',
     useParamsAsKeys: true
   })
-  static getHailstoneSeries(a: number): number[] {
+  static getHailstoneSeries(a: number): number {
     const go = (n: number, series: number[]) => {
       if (n <= 1) {
         return [...series, n];
@@ -15,6 +16,6 @@ export class HailstoneUtils {
       }
     };
 
-    return go(a, []);
+    return go(a, []).length - 1;
   }
 }

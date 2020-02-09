@@ -17,6 +17,5 @@ export interface InstrumentItem extends Instrument {
 }
 
 export interface Hailstone {
-  series: number[];
   totalStoppingTime: number;
 }

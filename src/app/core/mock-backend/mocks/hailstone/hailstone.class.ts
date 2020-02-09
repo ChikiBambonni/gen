@@ -9,10 +9,8 @@ export class HailstoneMocks extends MockBackendFactory<Hailstone> {
   }
 
   getData(params: any): Hailstone {
-    const series = HailstoneUtils.getHailstoneSeries(params.a);
     return {
-      series,
-      totalStoppingTime: series.length - 1
+      totalStoppingTime: HailstoneUtils.getHailstoneSeries(params.a)
     };
   }
 }

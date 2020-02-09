@@ -11,10 +11,8 @@ const getHailstone = async (req, res, next) => {
     }
 
     const series = mGetHailstoneSeries(a);
-
     return res.send({
-      series,
-      totalStoppingTime: series.length - 1
+      totalStoppingTime: series
     });
   } catch (err) {
     return next(err);
