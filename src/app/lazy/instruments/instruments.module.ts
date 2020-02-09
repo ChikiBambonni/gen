@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { MaterialModule } from '@material/material.module';
 import { CommonPaginatorModule } from '@shared/components/common-paginator/common-paginator.module';
+import { NoDataMessageModule } from '@shared/components/no-data-message/no-data-message.module';
 import { CommonTableModule } from '@shared/components/common-table/common-table.module';
 import { ErrorMessageModule } from '@shared/components/error-message/error-message.module';
 import { CommonSpinnerModule } from '@shared/components/common-spinner/common-spinner.module';
@@ -22,7 +23,8 @@ import { InstrumentsRoutingModule } from './instruments-routing.module';
     CommonTableModule,
     CommonPaginatorModule,
     CommonSpinnerModule,
-    ErrorMessageModule
+    ErrorMessageModule,
+    NoDataMessageModule
   ]
 })
 export class InstrumentsModule { }

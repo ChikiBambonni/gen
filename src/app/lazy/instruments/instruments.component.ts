@@ -34,8 +34,9 @@ export class InstrumentsComponent extends DataComponent implements OnInit {
       this.isLoading = false;
       this.error = res.error;
       if (!this.error) {
+        this.noDataToDisplay = res.value.elements[0] === undefined;
         this.dataSource = new MatTableDataSource();
-        this.displayedColumns = Object.keys(res.value.elements[0]);
+        this.displayedColumns = Object.keys(res.value.elements[0] ? res.value.elements[0] : {});
         this.dataSource.data = res.value.elements;
         this.pageEvent.length = res.value.totalElements;
       }

@@ -13,6 +13,7 @@
   <mat-card class="table-card">
     <app-common-spinner *ngIf="isLoading"></app-common-spinner>
     <app-error-message *ngIf="error" [error]="error"></app-error-message>
+    <app-no-data-message *ngIf="noDataToDisplay"></app-no-data-message>
     <app-common-table
       [displayedColumns]="displayedColumns"
       [dataSource]="dataSource">
