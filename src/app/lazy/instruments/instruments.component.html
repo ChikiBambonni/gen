@@ -18,6 +18,7 @@
       [dataSource]="dataSource">
     </app-common-table>
     <app-common-paginator
+      #paginator
       [length]="pageEvent.length"
       [pageSize]="pageEvent.pageSize"
       [pageSizeOptions]="[5, 10, 15, 20]"

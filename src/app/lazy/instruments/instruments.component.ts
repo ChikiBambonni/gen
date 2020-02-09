@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
+import { CommonPaginatorComponent } from '@shared/components/common-paginator/common-paginator.component';
 import { DataComponent } from '@core/utils/data-component.class';
 import { AppInfoRepository } from '@core/services/app-info-repository.service';
 import { ComponentResponse } from '@core/interfaces/http.interfaces';
@@ -20,6 +21,9 @@ export class InstrumentsComponent extends DataComponent implements OnInit {
   pageEvent: PageEvent = pageEvent;
   displayedColumns: string[];
   dataSource: MatTableDataSource<any>;
+
+  @ViewChild('paginator', { static: false })
+  paginatorComponent: CommonPaginatorComponent;
 
   private fetchData(event: PageEvent, open: boolean): void {
     this.repository.getInstruments({
@@ -54,7 +58,8 @@ export class InstrumentsComponent extends DataComponent implements OnInit {
 
   changeOpenOnly() {
     this.isLoading = true;
-    this.pageEvent = { previousPageIndex: 0, pageIndex: 0, pageSize: 10, length: 2 };
-    this.fetchData(pageEvent, this.openOnly);
+    this.pageEvent = pageEvent;
+    this.fetchData(this.pageEvent, this.openOnly);
+    this.paginatorComponent.paginator.firstPage();
   }
 }

@@ -3,8 +3,9 @@ import {
   OnInit,
   Input,
   Output,
-  EventEmitter } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
+  EventEmitter,
+  ViewChild} from '@angular/core';
+import { PageEvent, MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-common-paginator',
@@ -24,6 +25,8 @@ export class CommonPaginatorComponent implements OnInit {
 
   @Output()
   page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
+
+  @ViewChild('matpaginator', { static: false }) paginator: MatPaginator;
 
   constructor() { }
 
